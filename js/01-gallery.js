@@ -17,12 +17,14 @@ const modal = basicLightbox.create(`
 `);
 
 gallery.addEventListener('click', e => {
-    e.preventDefault();
-    modal.show();
+    if (e.target.nodeName === 'IMG') {
+        e.preventDefault();
+        modal.show();
 
-    const image = modal.element().querySelector('.modal-image');
-    image.src = e.target.dataset.original;
-    image.alt = e.target.alt;
+        const image = modal.element().querySelector('.modal-image');
+        image.src = e.target.dataset.original;
+        image.alt = e.target.alt;
+    }
 })
 
 window.addEventListener('keydown', e => {
